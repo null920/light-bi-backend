@@ -2,7 +2,8 @@ package com.light.springinit.exception;
 
 import com.google.common.collect.Maps;
 import com.light.springinit.common.result.Result;
-import com.light.springinit.exception.errorcode.PostErrorCode;
+import com.light.springinit.exception.errorcode.BizErrorCode;
+import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -51,8 +52,8 @@ public class GlobalWebExceptionHandler {
     @ResponseBody
     public Result illegalArgumentExceptionHandler(IllegalArgumentException ex) {
         Result result = new Result();
-        result.setCode(PostErrorCode.POST_QUERY_PARAM_ERROR.getCode());
-        result.setMessage(PostErrorCode.POST_QUERY_PARAM_ERROR.getMessage());
+        result.setCode(BizErrorCode.PARAM_CONVERT_ERROR.getCode());
+        result.setMessage(BizErrorCode.PARAM_CONVERT_ERROR.getMessage());
         result.setSuccess(false);
         return result;
     }
@@ -87,6 +88,40 @@ public class GlobalWebExceptionHandler {
         Result result = new Result();
         result.setCode(systemException.getErrorCode().getCode());
         result.setMessage(systemException.getErrorCode().getMessage());
+        result.setSuccess(false);
+        return result;
+    }
+
+    /**
+     * 自定义MyBatis系统异常处理器
+     *
+     * @param myBatisSystemException
+     * @return
+     */
+    @ExceptionHandler(MyBatisSystemException.class)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Result myBatisSystemExceptionHandler(MyBatisSystemException myBatisSystemException) {
+        Result result = new Result();
+        result.setCode(BizErrorCode.HTTP_SERVER_ERROR.getCode());
+        result.setMessage(BizErrorCode.HTTP_SERVER_ERROR.getMessage());
+        result.setSuccess(false);
+        return result;
+    }
+
+    /**
+     * 自定义系统异常处理器
+     *
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Result exceptionHandler(Exception ex) {
+        Result result = new Result();
+        result.setCode(BizErrorCode.HTTP_SERVER_ERROR.getCode());
+        result.setMessage(BizErrorCode.HTTP_SERVER_ERROR.getMessage());
         result.setSuccess(false);
         return result;
     }

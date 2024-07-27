@@ -54,7 +54,7 @@ public class PostVO implements Serializable {
     private Integer favourNum;
 
     /**
-     * 创建用户 id
+     * 创建用户信息
      */
     private UserVO userVO;
 

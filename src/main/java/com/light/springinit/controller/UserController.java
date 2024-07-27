@@ -5,16 +5,16 @@ import cn.dev33.satoken.stp.SaLoginModel;
 import cn.dev33.satoken.stp.StpUtil;
 import com.light.springinit.common.result.Result;
 import com.light.springinit.common.response.UserOperateResponse;
-import com.light.springinit.domain.dto.UserLoginRequest;
-import com.light.springinit.domain.dto.UserQueryRequest;
-import com.light.springinit.domain.dto.UserRegisterRequest;
+import com.light.springinit.domain.dto.user.UserLoginRequest;
+import com.light.springinit.domain.dto.user.UserQueryRequest;
+import com.light.springinit.domain.dto.user.UserRegisterRequest;
 import com.light.springinit.domain.entity.User;
 import com.light.springinit.domain.entity.convertor.UserConvertor;
 import com.light.springinit.domain.info.UserInfo;
 import com.light.springinit.domain.vo.LoginVO;
 import com.light.springinit.exception.UserException;
-import com.light.springinit.param.UserLoginParam;
-import com.light.springinit.param.UserRegisterParam;
+import com.light.springinit.param.user.UserLoginParam;
+import com.light.springinit.param.user.UserRegisterParam;
 import com.light.springinit.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,7 +58,7 @@ public class UserController {
     public Result<LoginVO> login(@Valid @RequestBody UserLoginParam userLoginParam) {
         UserLoginRequest userLoginRequest = new UserLoginRequest();
         userLoginRequest.setUsername(userLoginParam.getUsername());
-        userLoginRequest.setPassword(userLoginParam.getPassword());
+        userLoginRequest.setUserPassword(userLoginParam.getUserPassword());
         UserInfo userInfo = userService.userLogin(userLoginRequest);
         // 登录
         StpUtil.login(userInfo.getUserId(), new SaLoginModel()
@@ -80,7 +80,7 @@ public class UserController {
         if (user == null) {
             throw new UserException(USER_NOT_EXIST);
         }
-        user.setPassword(null);
+        user.setUserPassword(null);
         return Result.success(UserConvertor.INSTANCE.mapToInfo(user));
     }
 

@@ -1,23 +1,21 @@
 package com.light.springinit.domain.entity.convertor;
 
 
-import com.light.springinit.domain.entity.Post;
-import com.light.springinit.domain.info.PostInfo;
-import com.light.springinit.domain.vo.PostVO;
+import com.light.springinit.domain.entity.Chart;
+import com.light.springinit.domain.info.ChartInfo;
+import com.light.springinit.domain.vo.ChartVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 /**
  * @author null&&
  * @Date 2024/7/17 17:41
  */
 @Mapper(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS)
-public interface PostConvertor {
-    PostConvertor INSTANCE = Mappers.getMapper(PostConvertor.class);
+public interface ChartConvertor {
+    ChartConvertor INSTANCE = Mappers.getMapper(ChartConvertor.class);
 
     /**
      * 转换为vo
@@ -25,8 +23,8 @@ public interface PostConvertor {
      * @param request
      * @return
      */
-    @Mapping(target = "postId", source = "request.postId")
-    public PostVO mapToVo(Post request);
+    @Mapping(target = "chartId", source = "request.chartId")
+    public ChartVO mapToVo(Chart request);
 
     /**
      * 转换为实体
@@ -34,6 +32,6 @@ public interface PostConvertor {
      * @param request
      * @return
      */
-    @Mapping(target = "postId", source = "request.postId")
-    public Post mapToEntity(PostInfo request);
+    @Mapping(target = "chartId", source = "request.chartId")
+    public Chart mapToEntity(ChartInfo request);
 }

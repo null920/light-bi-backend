@@ -3,7 +3,7 @@ package com.light.springinit.domain.entity;
 import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.annotation.*;
 import com.light.springinit.constant.UserRole;
-import com.light.springinit.domain.dto.UserRegisterRequest;
+import com.light.springinit.domain.dto.user.UserRegisterRequest;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -34,7 +34,7 @@ public class User implements Serializable {
     /**
      * 密码
      */
-    private String password;
+    private String userPassword;
 
     /**
      * 电话
@@ -79,7 +79,7 @@ public class User implements Serializable {
 
     public User register(UserRegisterRequest userRegisterRequest) {
         this.setUsername(userRegisterRequest.getUsername());
-        this.setPassword(DigestUtil.md5Hex(userRegisterRequest.getPassword()));
+        this.setUserPassword(DigestUtil.md5Hex(userRegisterRequest.getUserPassword()));
         this.setPhone(userRegisterRequest.getPhone());
         this.setEmail(userRegisterRequest.getEmail());
         this.setUserRole(UserRole.USER);

@@ -1,9 +1,10 @@
-package com.light.springinit.param;
+package com.light.springinit.param.user;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * 用户登录参数
@@ -13,7 +14,9 @@ import javax.validation.constraints.NotBlank;
  */
 @Setter
 @Getter
-public class UserLoginParam {
+public class UserLoginParam implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     /**
      * 用户名
      */
@@ -24,7 +27,7 @@ public class UserLoginParam {
      * 密码
      */
     @NotBlank(message = "密码不能为空")
-    private String password;
+    private String userPassword;
 
     /**
      * 记住我

@@ -1,4 +1,4 @@
-package com.light.springinit.domain.dto;
+package com.light.springinit.domain.dto.user;
 
 import com.light.springinit.common.BaseRequest;
 import lombok.*;

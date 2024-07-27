@@ -3,9 +3,9 @@ package com.light.springinit.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.light.springinit.common.response.UserOperateResponse;
 import com.light.springinit.common.response.UserQueryResponse;
-import com.light.springinit.domain.dto.UserLoginRequest;
-import com.light.springinit.domain.dto.UserQueryRequest;
-import com.light.springinit.domain.dto.UserRegisterRequest;
+import com.light.springinit.domain.dto.user.UserLoginRequest;
+import com.light.springinit.domain.dto.user.UserQueryRequest;
+import com.light.springinit.domain.dto.user.UserRegisterRequest;
 import com.light.springinit.domain.entity.User;
 import com.light.springinit.domain.info.UserInfo;
 

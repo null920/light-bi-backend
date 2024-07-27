@@ -1,4 +1,4 @@
-package com.light.springinit.domain.dto;
+package com.light.springinit.domain.dto.user;
 
 import com.light.springinit.common.BaseRequest;
 import lombok.*;
@@ -25,5 +25,5 @@ public class UserLoginRequest extends BaseRequest {
     /**
      * 密码
      */
-    private String password;
+    private String userPassword;
 }

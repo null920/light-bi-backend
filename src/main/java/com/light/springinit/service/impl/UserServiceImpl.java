@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.light.springinit.common.response.UserOperateResponse;
 import com.light.springinit.common.response.UserQueryResponse;
 import com.light.springinit.constant.UserRole;
-import com.light.springinit.domain.dto.UserLoginRequest;
-import com.light.springinit.domain.dto.UserQueryRequest;
-import com.light.springinit.domain.dto.UserRegisterRequest;
+import com.light.springinit.domain.dto.user.UserLoginRequest;
+import com.light.springinit.domain.dto.user.UserQueryRequest;
+import com.light.springinit.domain.dto.user.UserRegisterRequest;
 import com.light.springinit.domain.entity.User;
 import com.light.springinit.domain.entity.convertor.UserConvertor;
 import com.light.springinit.domain.info.UserInfo;
@@ -43,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (userMapper.findByUsername(userRegisterRequest.getUsername()) != null) {
             throw new UserException(UserErrorCode.USER_NAME_EXIST);
         }
-        if (!userRegisterRequest.getPassword().equals(userRegisterRequest.getCheckPassword())) {
+        if (!userRegisterRequest.getUserPassword().equals(userRegisterRequest.getCheckPassword())) {
             throw new UserException(UserErrorCode.USER_CHECK_PASSWORD_NOT_SAME);
         }
         User user = new User();
@@ -81,7 +81,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new UserException(UserErrorCode.USER_STATUS_IS_BAN);
         }
         // 密码错误
-        if (!userInfo.getPassword().equals(DigestUtil.md5Hex(userLoginRequest.getPassword()))) {
+        if (!userInfo.getUserPassword().equals(DigestUtil.md5Hex(userLoginRequest.getUserPassword()))) {
             throw new UserException(UserErrorCode.USER_PASSWORD_ERROR);
         }
         return userInfo;

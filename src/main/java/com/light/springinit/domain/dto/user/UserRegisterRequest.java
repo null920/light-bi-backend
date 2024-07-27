@@ -1,7 +1,7 @@
-package com.light.springinit.domain.dto;
+package com.light.springinit.domain.dto.user;
 
 import com.light.springinit.common.BaseRequest;
-import com.light.springinit.param.UserRegisterParam;
+import com.light.springinit.param.user.UserRegisterParam;
 import lombok.*;
 
 /**
@@ -16,6 +16,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRegisterRequest extends BaseRequest {
+
     private static final long serialVersionUID = 1L;
     /**
      * 用户名
@@ -25,7 +26,7 @@ public class UserRegisterRequest extends BaseRequest {
     /**
      * 密码
      */
-    private String password;
+    private String userPassword;
 
     /**
      * 确认密码
@@ -44,7 +45,7 @@ public class UserRegisterRequest extends BaseRequest {
 
     public UserRegisterRequest(UserRegisterParam userRegisterParam) {
         this.username = userRegisterParam.getUsername();
-        this.password = userRegisterParam.getPassword();
+        this.userPassword = userRegisterParam.getUserPassword();
         this.checkPassword = userRegisterParam.getCheckPassword();
         this.phone = userRegisterParam.getPhone();
         this.email = userRegisterParam.getEmail();

@@ -20,6 +20,12 @@ public enum BizErrorCode implements ErrorCode {
 
 
     /**
+     * 参数转换错误
+     */
+    PARAM_CONVERT_ERROR("PARAM_CONVERT_ERROR", "参数转换错误"),
+
+
+    /**
      * 重复请求
      */
     DUPLICATED("DUPLICATED", "重复请求");
@@ -44,4 +50,4 @@ public enum BizErrorCode implements ErrorCode {
     public String getMessage() {
         return this.message;
     }
-    }
+}

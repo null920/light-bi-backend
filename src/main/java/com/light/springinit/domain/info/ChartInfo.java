@@ -1,6 +1,5 @@
 package com.light.springinit.domain.info;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,42 +16,42 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostInfo implements Serializable {
+public class ChartInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * post_id
+     * chart_id
      */
-    private Long postId;
+    private Long chartId;
 
     /**
-     * 标题
+     * 分析目标
      */
-    private String title;
+    private String goal;
 
     /**
-     * 内容
+     * 图表数据
      */
-    private String content;
+    private String chartData;
 
     /**
-     * 标签列表（json 数组）
+     * 图表类型
      */
-    private String tags;
+    private String chartType;
 
     /**
-     * 点赞数
+     * 生成的图表数据
      */
-    private Integer thumbNum;
+    private String genChartData;
 
     /**
-     * 收藏数
+     * 生成的分析结论
      */
-    private Integer favourNum;
+    private String genChartResult;
 
     /**
-     * 创建用户信息
+     * 提交用户信息
      */
     private UserInfo userInfo;
 
