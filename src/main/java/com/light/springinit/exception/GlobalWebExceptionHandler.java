@@ -108,21 +108,4 @@ public class GlobalWebExceptionHandler {
         result.setSuccess(false);
         return result;
     }
-
-    /**
-     * 自定义系统异常处理器
-     *
-     * @param ex
-     * @return
-     */
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.OK)
-    @ResponseBody
-    public Result exceptionHandler(Exception ex) {
-        Result result = new Result();
-        result.setCode(BizErrorCode.HTTP_SERVER_ERROR.getCode());
-        result.setMessage(BizErrorCode.HTTP_SERVER_ERROR.getMessage());
-        result.setSuccess(false);
-        return result;
-    }
 }

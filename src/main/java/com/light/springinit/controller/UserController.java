@@ -70,7 +70,7 @@ public class UserController {
         return Result.success(loginVO);
     }
 
-    @GetMapping("/me")
+    @GetMapping("/info")
     @SaCheckLogin
     public Result<UserInfo> getMyselfInfo() {
         String userId = (String) StpUtil.getLoginId();

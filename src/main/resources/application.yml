@@ -53,6 +53,13 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: true
+  # token 前缀
+  #token-prefix: Bearer
+  # 是否尝试从 cookie 里读取 Token
+  #is-read-cookie: false
+  # 是否尝试从 header 里读取 Token
+  #is-read-header: true
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
